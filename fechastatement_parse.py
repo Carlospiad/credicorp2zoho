@@ -15,14 +15,6 @@ with xlrd.open_workbook("data/data.xls") as wb:
         writer = csv.writer(csvout, lineterminator='\n')
         writer.writerow(['Date', 'Payee','Conepto','Referencia', 'Outflow', 'Inflow']) # write new header
         for row_index in range(12, num_rows):
-            writer.writerow((
-                sh.cell_value(row_index, colx=1), #fecha
-                sh.cell_value(row_index, colx=6),
-                sh.cell_value(row_index, colx=11),
-                sh.cell_value(row_index, colx=16),
-                sh.cell_value(row_index, colx=18),
-                sh.cell_value(row_index, colx=23)
-                ))
             # set count empty cells
             count_empty = 0
             print('Row: {}'.format(row_index))
@@ -50,7 +42,14 @@ with xlrd.open_workbook("data/data.xls") as wb:
                 print ('Row is empty')
                 # stop looping to next rows
                 break
-
+            writer.writerow((
+                sh.cell_value(row_index, colx=1), #fecha
+                sh.cell_value(row_index, colx=6),
+                sh.cell_value(row_index, colx=11),
+                sh.cell_value(row_index, colx=16),
+                sh.cell_value(row_index, colx=18),
+                sh.cell_value(row_index, colx=23)
+                ))
 
 # with open('data/output.csv', 'w+') as csvout:
 #     writer = csv.writer(csvout, lineterminator='\n')
