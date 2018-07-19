@@ -1,8 +1,9 @@
 import xlrd
 import csv
+from datetime import datetime
+
 
 book = xlrd.open_workbook("data/data.xls")
-
 sh = book.sheet_by_index(0)
 
 empty_cell= False
@@ -15,7 +16,7 @@ with xlrd.open_workbook("data/data.xls") as wb:
         writer.writerow(['Date', 'Payee','Conepto','Referencia', 'Outflow', 'Inflow']) # write new header
         for row_index in range(12, num_rows):
             writer.writerow((
-                sh.cell_value(row_index, colx=1),
+                sh.cell_value(row_index, colx=1), #fecha
                 sh.cell_value(row_index, colx=6),
                 sh.cell_value(row_index, colx=11),
                 sh.cell_value(row_index, colx=16),
