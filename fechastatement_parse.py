@@ -44,8 +44,8 @@ with xlrd.open_workbook("data/data.xls") as wb:
                 break
             writer.writerow((
                 sh.cell_value(row_index, colx=1), #fecha
-                sh.cell_value(row_index, colx=6),
-                sh.cell_value(row_index, colx=11),
+                '',
+                sh.cell_value(row_index, colx=6)+sh.cell_value(row_index, colx=11),
                 sh.cell_value(row_index, colx=16),
                 sh.cell_value(row_index, colx=18),
                 sh.cell_value(row_index, colx=23)
